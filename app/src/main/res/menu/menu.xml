@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"/>
+
+    <item
+        android:id="@+id/nav_scanner"
+        android:title="Scan"
+        android:icon="@drawable/ic_baseline_photo_camera_24"/>
+
+    <item
+        android:id="@+id/nav_report"
+        android:title="Report"
+        android:icon="@drawable/ic_baseline_error_24"/>
+
+    <item
+        android:id="@+id/nav_maintenance"
+        android:title="Maintenance"
+        android:icon="@drawable/ic_baseline_build_24"/>
+
+</menu>
