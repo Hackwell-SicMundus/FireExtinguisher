@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 public class ReportFragment extends Fragment {
 
     RecyclerView recyclerView;
-    ReportAdapter reportAdapter;
+  // ReportAdapter reportAdapter;
 
     public ReportFragment() {
         // Required empty public constructor
