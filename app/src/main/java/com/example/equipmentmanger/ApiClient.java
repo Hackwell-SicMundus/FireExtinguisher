@@ -29,7 +29,7 @@ public class ApiClient {
         //    okHttpClient.setReadTimeout(30, TimeUnit.SECONDS);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://172.105.38.73:5000/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)

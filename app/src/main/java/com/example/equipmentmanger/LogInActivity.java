@@ -6,18 +6,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LogInActivity extends AppCompatActivity {
 
     private static final String TAG = LogInActivity.class.getSimpleName();
-    private static final String SHARED_PREFS = "sharedPrefs";
-    private static final String USER_EMAIL = "userEmail";
-
     private Button logInButton;
     private TextView signUpButton;
     private EditText mUserEmail;
@@ -78,29 +82,56 @@ public class LogInActivity extends AppCompatActivity {
 
     // Authenticate the user by sending request
     private void getLoginStatus() {
+        Call<List<LoginResponse>> loginDetail = ApiClient.getInventoryService().getLoginDetail(userEmail,userPassword);
+
+        loginDetail.enqueue(new Callback<List<LoginResponse>>() {
+            @Override
+            public void onResponse(Call<List<LoginResponse>> call, Response<List<LoginResponse>> response) {
+                List<LoginResponse> RolesDetails = response.body();
+                LoginResponse LoginResponse = RolesDetails.get(0);
+
+                Toast.makeText(LogInActivity.this,  " "+LoginResponse.getRole(), Toast.LENGTH_SHORT).show();
+
+                String Role=LoginResponse.getRole();
+                Log.d(TAG,"onSuccess "+Role);
+
+                if(Role.equals("User"))
+                {
+                    Intent intent = new Intent(LogInActivity.this,ManagementActivity.class);
+                    intent.putExtra("userId",LoginResponse.getId());
+                    startActivity(intent);
+                }
+                else if(Role.equals("Engineer"))
+                {
+                    Intent intent = new Intent(LogInActivity.this,ManagementActivity.class);
+                    intent.putExtra("userId",LoginResponse.getId());
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(LogInActivity.this, "not classified user", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<LoginResponse>> call, Throwable t) {
+                Log.d(TAG, "onFailure: api not working "+t);
+            }
+        });
+
 
 
     }
+
+
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        loadUserEmail();
-        //   Toast.makeText(this, mCurrentUser, Toast.LENGTH_SHORT).show();
-
-        if(mCurrentUser!=null)
-        {
-            finish();
-        }
 
     }
 
-    public void loadUserEmail()
-    {
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-
-        mCurrentUser = sharedPreferences.getString(USER_EMAIL, null);
-    }
 
 }

@@ -12,11 +12,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class ManagementActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_management);
+
+        userId = getIntent().getIntExtra("userId",0);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
@@ -39,6 +42,9 @@ public class ManagementActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_report:
                             selectedFragment = new ReportFragment();
+                            Bundle homeBundle = new Bundle();
+                            homeBundle.putInt("userId",userId);
+                            selectedFragment.setArguments(homeBundle);
                             break;
                         case R.id.nav_maintenance:
                             selectedFragment = new MaintenanceFragment();
