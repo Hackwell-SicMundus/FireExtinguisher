@@ -48,6 +48,8 @@ public class CreateSiteActivity extends AppCompatActivity {
                     public void onResponse(Call<String> call, Response<String> response) {
                         Toast.makeText(CreateSiteActivity.this, "Successful:response"+createSiteRequest.getName()+createSiteRequest.getLocation(), Toast.LENGTH_SHORT).show();
                         String responses = response.body();
+                        Intent intent = new Intent(CreateSiteActivity.this,ManagementActivity.class);
+                        startActivity(intent);
                      /*   if(response.isSuccessful())
                         {
                             Toast.makeText(CreateSiteActivity.this,"Saved Successfully", Toast.LENGTH_SHORT).show();

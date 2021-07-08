@@ -2,6 +2,7 @@ package com.example.equipmentmanger;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -97,11 +98,11 @@ public class LogInActivity extends AppCompatActivity {
 
                 if(Role.equals("User"))
                 {
-                    Intent intent = new Intent(LogInActivity.this,ManagementActivity.class);
+                    Intent intent = new Intent(LogInActivity.this,UserReportActivity.class);
                     intent.putExtra("userId",LoginResponse.getId());
                     startActivity(intent);
                 }
-                else if(Role.equals("Engineer"))
+                else if(Role.equals("Worker"))
                 {
                     Intent intent = new Intent(LogInActivity.this,ManagementActivity.class);
                     intent.putExtra("userId",LoginResponse.getId());

@@ -22,11 +22,11 @@ public class UserReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_report);
 
-        reportEquipmentName.findViewById(R.id.user_report_equipment_name);
-        reportEquipmentId.findViewById(R.id.user_report_equipment_id);
-        reportLocation.findViewById(R.id.user_report_location);
-        reportDescription.findViewById(R.id.user_report_issue_editText);
-        reportUrgency.findViewById(R.id.user_report_ratingBar);
-        reportButton.findViewById(R.id.user_report_button);
+        reportEquipmentName=findViewById(R.id.user_report_equipment_name);
+        reportEquipmentId=findViewById(R.id.user_report_equipment_id);
+        reportLocation=findViewById(R.id.user_report_location);
+        reportDescription=findViewById(R.id.user_report_issue_editText);
+        reportUrgency=findViewById(R.id.user_report_ratingBar);
+        reportButton=findViewById(R.id.user_report_button);
     }
 }

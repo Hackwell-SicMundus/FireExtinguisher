@@ -53,6 +53,8 @@ public class CreateEquipmentActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         Toast.makeText(CreateEquipmentActivity.this, "Successful:response"+createEquipmentRequest.getName(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(CreateEquipmentActivity.this,EquipmentActivity.class);
+                        startActivity(intent);
                         //String responses = response.body();
                     }
 

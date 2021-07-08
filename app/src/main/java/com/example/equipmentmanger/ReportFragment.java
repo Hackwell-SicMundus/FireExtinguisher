@@ -77,7 +77,10 @@ public class ReportFragment extends Fragment {
 
         Intent intent = new Intent(getActivity(),ReportActivity.class);
 
-       // intent.putExtra("siteId",siteResponse.getId());
+        intent.putExtra("itemName",reportResponse.getName());
+        intent.putExtra("urgency",reportResponse.getUrgency());
+        intent.putExtra("date",reportResponse.getDate());
+        intent.putExtra("itemId",reportResponse.getIdInventory());
         startActivity(intent);
     }
 
